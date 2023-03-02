@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d dist --copy-files",
     "pm2": "pm2-runtime start pm2.config.cjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint ./src",
