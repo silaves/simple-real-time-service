@@ -39,6 +39,9 @@ export const Schemas = {
   item: Joi.object({
     name: Joi.string().required(),
   }),
+  category: Joi.object({
+    name: Joi.string().required(),
+  }),
   clientCreate: {
     name: Joi.string().required(),
     lastname: Joi.string().required(),

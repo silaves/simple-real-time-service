@@ -2,6 +2,7 @@ import {asFunction} from "awilix";
 import {ClientRoute} from '../api/route/client';
 import {AuthRoute} from '../api/route/auth';
 import {ItemRoute} from "../api/route/item";
+import {CategoryRoute} from "../api/route/category";
 
 const registerRoute = (container) => {
   container.register({
@@ -13,6 +14,9 @@ const registerRoute = (container) => {
     }).singleton(),
     ItemRouter: asFunction(({itemController}) => {
       return ItemRoute(itemController)
+    }).singleton(),
+    CategoryRouter: asFunction(({categoryController}) => {
+      return CategoryRoute(categoryController)
     }).singleton(),
   });
 }

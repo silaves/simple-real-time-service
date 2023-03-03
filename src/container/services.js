@@ -2,6 +2,7 @@ import {asFunction} from 'awilix';
 import {ClientService} from '../services/clientService';
 import {AuthService} from '../services/authService';
 import {ItemService} from "../services/itemService";
+import {CategoryService} from "../services/categoryService";
 
 function registerServices (container) {
   container.register({
@@ -13,6 +14,9 @@ function registerServices (container) {
     }),
     itemService: asFunction(({appConfig}) => {
       return new ItemService(appConfig);
+    }),
+    categoryService: asFunction(() => {
+      return new CategoryService();
     }),
   });
 }

@@ -5,6 +5,7 @@ import {ClientController} from '../api/controllers/clientController';
 import {AuthController} from '../api/controllers/authController';
 import {authorize} from '../api/middleware/authenticate';
 import {ItemController} from "../api/controllers/itemController";
+import {CategoryController} from "../api/controllers/categoryController";
 
 function registerRestApi (container) {
   container.register({
@@ -17,6 +18,9 @@ function registerRestApi (container) {
     itemController: asFunction(({itemService}) => {
       return new ItemController(itemService);
     }),
+    categoryController: asFunction(({categoryService}) => {
+      return new CategoryController(categoryService);
+    }),
     authMiddleware: asFunction(({appConfig}) => {
       return authorize(appConfig);
     }),
@@ -24,12 +28,14 @@ function registerRestApi (container) {
       ClientRouter,
       AuthRouter,
       ItemRouter,
+      CategoryRouter,
       authMiddleware,
     }) => {
       const router = Router();
       router.use(express.json());
       router.use('/client', authMiddleware, ClientRouter);
       router.use('/item', authMiddleware, ItemRouter);
+      router.use('/category', authMiddleware, CategoryRouter);
       router.use('/auth', AuthRouter);
       return router;
     }),
