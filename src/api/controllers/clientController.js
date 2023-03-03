@@ -1,19 +1,21 @@
+let  service = null;
+
 export class ClientController {
 
   constructor(clientService) {
-    this.clientService = clientService;
+    service = clientService;
   }
 
   async create (req, res) {
-    return res.status(200).json({
-      message: "create client"
-    });
+    const user = await service.create(req.body);
+
+    return res.status(200).json(user);
   }
 
   async get (req, res) {
-    return res.status(200).json({
-      message: "get client"
-    });
+    const users = await service.getAll();
+
+    return res.status(200).json(users);
   }
 
   async update (req, res) {

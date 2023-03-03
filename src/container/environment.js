@@ -12,6 +12,14 @@ const {
   LOG_LEVEL,
   API_PREFIX,
   NODE_ENV,
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_URL,
+  JWT_SYMMETRIC_SECRET,
+  JWT_EXPIRATION_TIME,
+  JWT_ALGORITHM,
+  JWT_ISSUER,
+  JWT_AUDIENCE,
 } = process.env
 
 const registerEnvironment = (container) => {
@@ -21,6 +29,18 @@ const registerEnvironment = (container) => {
       logLevel: LOG_LEVEL,
       apiPrefix: API_PREFIX,
       nodeEnv: NODE_ENV,
+      dataBase: {
+        user: MONGO_USERNAME,
+        password: MONGO_PASSWORD,
+        url: MONGO_URL,
+      },
+      jwt: {
+        secret: JWT_SYMMETRIC_SECRET,
+        expiration: JWT_EXPIRATION_TIME,
+        algorithm: JWT_ALGORITHM,
+        issuer: JWT_ISSUER,
+        audience: JWT_AUDIENCE,
+      }
     })
   })
 }

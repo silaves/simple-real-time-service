@@ -1,3 +1,5 @@
+import User from "../models/User";
+
 export class ClientService {
 
   constructor (appConfig) {
@@ -5,7 +7,11 @@ export class ClientService {
   }
 
   async create (data) {
-    return null;
+    try {
+      return await User.create(data);
+    } catch (e) {
+      throw new Error(`Failed to create user due to: ${e}`);
+    }
   }
 
   async update (client) {
@@ -21,6 +27,10 @@ export class ClientService {
   }
 
   async getAll () {
-    return null;
+    try {
+      return await User.find();
+    } catch (e) {
+      throw new Error(`Failed to retrieve users due to: ${e}`);
+    }
   }
 }
