@@ -6,8 +6,8 @@ import {CategoryService} from "../services/categoryService";
 
 function registerServices (container) {
   container.register({
-    clientService: asFunction(({appConfig}) => {
-      return new ClientService(appConfig);
+    clientService: asFunction(() => {
+      return new ClientService();
     }),
     authService: asFunction(({appConfig}) => {
       return new AuthService(appConfig);

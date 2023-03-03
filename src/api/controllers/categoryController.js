@@ -9,9 +9,9 @@ export class CategoryController {
   }
 
   async create (req, res) {
-    const user = await _categoryService.create(req.body);
+    const category = await _categoryService.create(req.body);
 
-    return res.status(200).json(user);
+    return res.status(200).json(category);
   }
 
   async get (req, res) {
@@ -34,7 +34,6 @@ export class CategoryController {
 
   async delete (req, res) {
     try {
-      console.log('delete')
       const category = await _categoryService.delete(req.params.id);
       return res.status(200).json({message: "successful"});
     } catch (e) {

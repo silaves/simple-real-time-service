@@ -11,7 +11,7 @@ const UserSchema = new Schema(
     address: {type: String, required: false},
     phone: {type: String, required: false},
     isActive: {type: Boolean, default: true},
-    profile: {type: Schema.Types.ObjectId, required: true, ref: 'Profile'},
+    profile: {type: Schema.Types.ObjectId, required: false, ref: 'Profile'},
   },
     {
       timestamps: true,

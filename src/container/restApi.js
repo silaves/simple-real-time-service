@@ -9,8 +9,8 @@ import {CategoryController} from "../api/controllers/categoryController";
 
 function registerRestApi (container) {
   container.register({
-    clientController: asFunction(({clientService}) => {
-      return new ClientController(clientService);
+    clientController: asFunction(({clientService, authService}) => {
+      return new ClientController(clientService, authService);
     }),
     authController: asFunction(({authService, appConfig}) => {
       return new AuthController(authService, appConfig);

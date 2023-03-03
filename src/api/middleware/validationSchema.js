@@ -42,11 +42,11 @@ export const Schemas = {
   category: Joi.object({
     name: Joi.string().required(),
   }),
-  clientCreate: {
+  clientCreate: Joi.object({
     name: Joi.string().required(),
     lastname: Joi.string().required(),
     email: Joi.string().required(),
-    phone: Joi.string().required(),
-    address: Joi.string().required(),
-  },
+    phone: Joi.string(),
+    address: Joi.string(),
+  }),
 }
