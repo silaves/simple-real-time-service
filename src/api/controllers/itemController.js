@@ -9,9 +9,9 @@ export class ItemController {
   }
 
   async create (req, res) {
-    const user = await _itemService.create(req.body);
+    const item = await _itemService.create(req.body);
 
-    return res.status(200).json(user);
+    return res.status(200).json(item);
   }
 
   async get (req, res) {

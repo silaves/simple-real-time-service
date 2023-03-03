@@ -49,4 +49,11 @@ export const Schemas = {
     phone: Joi.string(),
     address: Joi.string(),
   }),
+  productCreate: Joi.object({
+    user: Joi.string().required(),
+    item: Joi.string().required(),
+    category: Joi.string().required(),
+    name: Joi.string().required(),
+    stock: Joi.number().required(),
+  }),
 }

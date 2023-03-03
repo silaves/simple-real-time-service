@@ -3,6 +3,7 @@ import {ClientService} from '../services/clientService';
 import {AuthService} from '../services/authService';
 import {ItemService} from "../services/itemService";
 import {CategoryService} from "../services/categoryService";
+import {ProductService} from "../services/productService";
 
 function registerServices (container) {
   container.register({
@@ -17,6 +18,9 @@ function registerServices (container) {
     }),
     categoryService: asFunction(() => {
       return new CategoryService();
+    }),
+    productService: asFunction(() => {
+      return new ProductService();
     }),
   });
 }
