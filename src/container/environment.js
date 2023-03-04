@@ -20,6 +20,7 @@ const {
   JWT_ALGORITHM,
   JWT_ISSUER,
   JWT_AUDIENCE,
+  APP_SIMPLE_HOST,
 } = process.env
 
 const registerEnvironment = (container) => {
@@ -29,6 +30,7 @@ const registerEnvironment = (container) => {
       logLevel: LOG_LEVEL,
       apiPrefix: API_PREFIX,
       nodeEnv: NODE_ENV,
+      appSimpleHost: APP_SIMPLE_HOST,
       dataBase: {
         user: MONGO_USERNAME,
         password: MONGO_PASSWORD,
