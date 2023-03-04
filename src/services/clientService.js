@@ -1,4 +1,5 @@
 import User from "../models/User";
+import Profile from "../models/Profile";
 
 export class ClientService {
 
@@ -24,7 +25,10 @@ export class ClientService {
 
   async delete (id) {
     try {
-      return await User.findByIdAndDelete(id);
+      const user = await User.findById(id);
+      await Profile.deleteOne({ _id: user.profile });
+      await User.deleteOne({ _id: id });
+      return user;
     } catch (e) {
       throw new Error(`Failed to delete user due to: ${e}`);
     }

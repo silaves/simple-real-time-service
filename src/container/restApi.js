@@ -1,5 +1,6 @@
 import express, {Router} from 'express';
 import helmet from 'helmet';
+import cors from "cors";
 import {asFunction} from 'awilix';
 import {ClientController} from '../api/controllers/clientController';
 import {AuthController} from '../api/controllers/authController';
@@ -48,6 +49,9 @@ function registerRestApi (container) {
     express: asFunction(({router, appConfig}) => {
       const app = express();
       app.use(helmet());
+      app.use(cors({
+        origin: 'http://localhost:5173'
+      }));
       app.use(appConfig.apiPrefix, router);
       return app;
     }),

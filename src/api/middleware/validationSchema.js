@@ -28,9 +28,7 @@ export const Schemas = {
     name: Joi.string().required(),
     lastname: Joi.string().required(),
     email: Joi.string().required(),
-    profile: Joi.object({
-      password: Joi.string().required(),
-    }),
+    password: Joi.string().required(),
   }),
   login: Joi.object({
     email: Joi.string().required(),

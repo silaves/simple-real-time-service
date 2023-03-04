@@ -12,7 +12,7 @@ export class ClientController {
 
   async create (req, res) {
     const existEmail = await _authService.existEmail(req.body.email);
-    if (existEmail) return res.status(400).json({message: "Email already exist"});
+    if (existEmail) return res.status(400).json({message: "Invalid params", email: "Email already exists"});
 
     const user = await _clientService.create(req.body);
     return res.status(200).json(user);

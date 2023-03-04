@@ -42,10 +42,14 @@ export class AuthService {
   }
 
   async verifyPassword (email, password) {
-    const user = await User.findOne({email: email}).populate('profile');
-    if (!user) return false;
+    try {
+      const user = await User.findOne({email: email}).populate('profile');
+      if (!user) return false;
 
-    return comparePassword(password, user.profile.password);
+      return comparePassword(password, user.profile.password);
+    } catch (e) {
+     return false;
+    }
   }
 
   async existEmail (email) {

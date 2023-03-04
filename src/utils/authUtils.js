@@ -10,7 +10,6 @@ export const generateJWT = async (jwtData) => {
     audience,
     expiration,
   } = jwtData;
-  console.log(data)
   const secretToken = new TextEncoder().encode(symmetricSecret);
 
   return await new jose.SignJWT(data)

@@ -17,15 +17,18 @@ export class AuthController {
     if (!valid) return res.status(400).json({message: "Invalid params"});
 
     const existEmail = await _authService.existEmail(req.body.email);
-    if (existEmail) return res.status(400).json({message: "Email already exist"});
+    if (existEmail) return res.status(400).json({message: "Invalid params", email: "Email already exists"});
 
     try {
-      const token = await _authService.signUp(req.body);
+      const data = {
+        ...req.body,
+        profile: {password: req.body.password}
+      };
+      const token = await _authService.signUp(data);
       return res.status(200).json({
         token: token
       });
     } catch (e) {
-      console.log(e)
       return res.status(401).json({
         message: "Not authorized"
       });
@@ -40,6 +43,7 @@ export class AuthController {
     if (!validCredentials){
       return res.status(401).json({message: "Not authorized"});
     }
+
     const user = await User.findOne({email: req.body.email});
     const jwtData = {
       data: user.toObject(),

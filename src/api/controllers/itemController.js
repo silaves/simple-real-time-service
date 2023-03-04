@@ -34,7 +34,6 @@ export class ItemController {
 
   async delete (req, res) {
     try {
-      console.log('delete')
       const item = await _itemService.delete(req.params.id);
       return res.status(200).json({message: "successful"});
     } catch (e) {
